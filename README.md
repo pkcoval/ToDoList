@@ -1,5 +1,5 @@
 
-# PHARMACY
+# ToDoList
 
 APLIKACJA REST:
 
