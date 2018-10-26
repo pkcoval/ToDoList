@@ -15,4 +15,4 @@ javascript, jquery-ajax, nodejs, restful-api
 
  
  ## Screen:
-![Example screenshot](/s/1.png)
+![Example screenshot](/1.png)
