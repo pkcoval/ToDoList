@@ -5,12 +5,13 @@ APLIKACJA REST:
 
  ## Funkcjonalności:
 
--Możemy dodawać usuwać zadania do wykonania
+-Możemy dodawać i usuwać zadania do wykonania
 
 -Zadania zapisywane poprzez AJAX-a w plikach
 
 ## Technologie:
  
- spring-boot , spring-security, spring-data-jpa, hibernate, thymeleaf, mysql-database, spring-validation
+javascript, jquery-ajax, nodejs, restful-api
+
  
  ## Screen:
