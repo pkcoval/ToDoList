@@ -49,7 +49,8 @@ app.post('/task', function(req, res) {
             //Dodaj nowy element:
             taskList.push({
                 id: currentId,
-                name: productName
+                name: productName,
+                isDon: false
             });
             //Zamień zaktualizowaną tablicę znów na JSON:
             const jsonToWrite = JSON.stringify(taskList);
@@ -70,7 +71,7 @@ app.post('/task', function(req, res) {
 });
 
 //DELETE
-app.delete('/products/:id', function(req, res) {
+app.delete('/task/:id', function(req, res) {
     var id = req.params.id;
 
     var found = false;
@@ -91,7 +92,76 @@ app.delete('/products/:id', function(req, res) {
 
             fs.writeFile(DB_FILE, jsonToWrite, (err, data) => {//Zapisz plik
                 if (!err) {
-                    res.send('USUNIETO.');
+                    res.send('USUNIETO!');
+                } else {
+                    console.log('Błąd zapisu pliku', err);
+                    res.send('Wystąpił błąd zapisu.');
+                }
+            });
+        } else {
+            console.log('Błąd odczytu pliku', err);
+            res.send('Wystąpił błąd odczytu.');
+        }
+    });
+});
+
+//UPDATE NAME
+app.put('/task/:id', function(req, res) {
+    var id = req.params.id;
+    var newName = req.body.newName;
+
+    var found = false;
+
+    fs.readFile(DB_FILE, (err, data) => {//Odczytaj plik
+        if (!err){
+            //Jeżeli jest ok, to wczytaj dane z JSONa do tablicy:
+            taskList = JSON.parse(data);
+            //UPDATE  ELEMENT:
+            taskList.forEach(function(task, index) {
+                if (!found && task.id === Number(id)) {
+                    task.name = newName;
+                }
+            });
+            //Zamień zaktualizowaną tablicę znów na JSON:
+            const jsonToWrite = JSON.stringify(taskList);
+
+            fs.writeFile(DB_FILE, jsonToWrite, (err, data) => {//Zapisz plik
+                if (!err) {
+                    res.send('ZAKTUALIZOWANO NAZWE!');
+                } else {
+                    console.log('Błąd zapisu pliku', err);
+                    res.send('Wystąpił błąd zapisu.');
+                }
+            });
+        } else {
+            console.log('Błąd odczytu pliku', err);
+            res.send('Wystąpił błąd odczytu.');
+        }
+    });
+});
+
+//UPDATE CHECKED
+app.put('/taskChecked/:id', function(req, res) {
+    var id = req.params.id;
+    var newIsDon = req.body.newIsDon;
+
+    var found = false;
+    fs.readFile(DB_FILE, (err, data) => {//Odczytaj plik
+        if (!err){
+            //Jeżeli jest ok, to wczytaj dane z JSONa do tablicy:
+            taskList = JSON.parse(data);
+            //UPDATE  ELEMENT:
+            taskList.forEach(function(task, index) {
+                if (!found && task.id === Number(id)) {
+                    task.isDon = newIsDon;
+                }
+            });
+            //Zamień zaktualizowaną tablicę znów na JSON:
+            const jsonToWrite = JSON.stringify(taskList);
+
+            fs.writeFile(DB_FILE, jsonToWrite, (err, data) => {//Zapisz plik
+                if (!err) {
+                    res.send('ZAKTUALIZOWANO STAN ZADANIA!');
                 } else {
                     console.log('Błąd zapisu pliku', err);
                     res.send('Wystąpił błąd zapisu.');

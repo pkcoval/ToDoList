@@ -12,7 +12,7 @@
 <body>
 <section class="todoapp">
     <header class="header">
-        <h1>todos</h1>
+        <h1 style="color: #b83f45">todo</h1>
         <input  class="new-todo" placeholder="What needs to be done?" autofocus>
     </header>
     <!-- This section should be hidden by default and shown when there are todos -->
@@ -62,10 +62,10 @@
                 <a class="selected" href="#/">All</a>
             </li>
             <li>
-                <a href="#/active">Active</a>
+                <a id="active" href="#/active">Active</a>
             </li>
             <li>
-                <a href="#/completed">Completed</a>
+                <a id="completed" href="#/completed">Completed</a>
             </li>
         </ul>
         <!-- Hidden if no completed items are left ↓ -->
@@ -77,7 +77,7 @@
     <!-- Remove the below line ↓ -->
     <p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
     <!-- Change this out with your name and url ↓ -->
-    <p>Created by <a href="http://todomvc.com">you</a></p>
+    <p>Created by <a href="https://github.com/pkcoval">you</a></p>
     <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 </footer>
 
