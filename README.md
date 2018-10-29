@@ -5,9 +5,13 @@ APLIKACJA REST:
 
  ## Funkcjonalności:
 
--Możemy dodawać i usuwać zadania do wykonania
+-Dodawanie, usuwanie i edytowanie zadania do wykonania
 
 -Zadania zapisywane poprzez AJAX-a w plikach
+
+-Wyświetlanie zadań wykonanych i niewykonanych
+
+-Usuniecie wszystkich wykonanych zadań
 
 ## Technologie:
  
