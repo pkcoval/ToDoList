@@ -20,7 +20,7 @@ var taskList = [
 ];
 
 const DB_FILE = './data/przykladOdczytZapis/db2.json';
-var currentId = 2;
+
 
 //WCZYTANIE LISTY ZADAN Z PLIKU
 fs.readFile(DB_FILE, (err, data) => {
@@ -30,11 +30,18 @@ fs.readFile(DB_FILE, (err, data) => {
         console.log('Błąd odczytu pliku', err);
         res.send('Wystąpił błąd odczytu.');
     }
+
 });
+
+var currentId = 0;
+
 
 //POBRANIE WSZYSTKICH ZADAN
 app.get('/task', function(req, res) {
     res.send({ tasks: taskList });
+    currentId = parseInt(taskList[taskList.length - 1].id);
+    console.log(taskList[taskList.length - 1]);
+
 });
 
 // DODANIE NOWEGO ZADANIA

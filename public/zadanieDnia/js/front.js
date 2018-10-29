@@ -143,21 +143,6 @@ $(function () {
         });
     });
 
-    //DELETE COMPLETED
-    $('.clear-completed').on('click', function() {
-        var rowEl = $(this).closest('li');
-        var id = rowEl.find('label').attr('data-id');
-
-        $.ajax({
-            url: '/task/' + id,
-            method: 'DELETE',
-            contentType: 'application/json',
-            success: function(response) {
-                console.log(response);
-                btnAll.click();
-            }
-        });
-    });
 
     // UPDATE/PUT
     $('.todo-list').on('dblclick', 'label', function() {
@@ -226,11 +211,13 @@ $(function () {
 
     $('.footer').on('click', '.clear-completed', function() {
         console.log('clear completed')
-        // $('.todo-list').children('li').each(function () {
-        //     console.log($(this))
-        // // if (this.)
-        //
-        // });
+        $('.todo-list').children('li').each(function () {
+
+            if ($(this).hasClass("completed")) {
+                $(this).find('button').click();
+            }
+
+        });
     });
 
 
