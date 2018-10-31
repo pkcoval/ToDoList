@@ -13,6 +13,8 @@ APLIKACJA REST:
 
 -Usuniecie wszystkich wykonanych zadań
 
+-Ile zadań zostało do wykonania
+
 ## Technologie:
  
 javascript, jquery-ajax, nodejs, restful-api
